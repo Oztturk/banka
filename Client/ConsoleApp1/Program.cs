@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.Remoting.Metadata.W3cXsd2001;
@@ -16,6 +16,8 @@ namespace BankOfYusuf
         const string tag = " | Bank Of Yusuf";
         static void Main(string[] args)
         {
+            // https://github.com/Oztturk/banka
+
             /*
                 TODO:
 
@@ -37,7 +39,14 @@ namespace BankOfYusuf
             Console.WriteLine("Yapmak istediğiniz işlemi seçin." + tag);
             Console.WriteLine();
             Console.WriteLine("[1] Giriş yap [2] Kayıt Ol");
-            int ISLEM = int.Parse(Console.ReadLine());
+            int ISLEM;
+            string ISLEM2 = Console.ReadLine();
+            if (string.IsNullOrEmpty(ISLEM2) || !int.TryParse(ISLEM2, out ISLEM)) {
+                Console.WriteLine("Lütfen geçerli bir değer girin");
+                Thread.Sleep(1000);
+                Console.Clear();
+                goto BASADON; 
+            }
             if (ISLEM == 1)
             {
                 Console.Clear();
@@ -67,7 +76,16 @@ namespace BankOfYusuf
                     Console.WriteLine("[1] Para çek \n[2] Para Yatır\n[3] Para gönder\n[4] Bakiye Sorgula\n[5] Şifre değiştir\n[6] Loglar\n[7] Çıkış yap");
 
 
-                    int BANKAISLEM = int.Parse(Console.ReadLine());
+                    int BANKAISLEM;
+                    string BANKAIS = Console.ReadLine();
+                    if (string.IsNullOrEmpty(BANKAIS) || !int.TryParse(BANKAIS, out BANKAISLEM))
+                    {
+                        Console.WriteLine("Lütfen geçerli bir değer girin");
+                        Thread.Sleep(1000);
+                        Console.Clear();
+                        goto Main;
+                    }
+
                     if (BANKAISLEM == 1)
                     {
                         Console.Clear();
