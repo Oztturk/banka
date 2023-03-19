@@ -246,11 +246,15 @@ namespace BankOfYusuf
                     }else if(BANKAISLEM == 6)
                     {
                         Console.Clear();
-                        foreach (var item in KullaniciDatasi["logs"]) // foreach döngüsü ile hesap haraketlerini alır
-                        {
 
-                            Console.WriteLine(item);
+
+                        JArray items = (JArray)KullaniciDatasi["logs"];// logs'u array haline getirir
+
+                        for (int i = items.Count - 1; i >= 0; i--)  
+                        {
+                            Console.WriteLine(items[i]);
                         }
+
                         Console.WriteLine("-------------------------------------------");
                         Console.WriteLine("R Tuşunda basarak geri dönebilirsin.");
                         ConsoleKeyInfo consoleKeyInfo = Console.ReadKey();
